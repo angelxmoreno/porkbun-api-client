@@ -207,3 +207,8 @@ export type SslRetrieveResponse = SuccessResponse<{
     bundle?: string;
     [key: string]: unknown;
 }>;
+
+// /pricing/get
+export type PricingGetResponse = SuccessResponse<{
+    pricing: Record<string, { registration: string; renewal: string; transfer: string }>;
+}>;
