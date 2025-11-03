@@ -1,0 +1,21 @@
+:root {
+    --color-background: #0d1117;
+    --color-background-secondary: #161b22;
+    --color-text: #c9d1d9;
+    --color-link: #58a6ff;
+    --color-border: #30363d;
+}
+
+body {
+    background: var(--color-background);
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-link);
+}
+
+code {
+    background: #161b22;
+    color: #f0f6fc;
+}
