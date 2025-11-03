@@ -1,5 +1,19 @@
 # Porkbun (v3) API Client
 
+[![npm version](https://badge.fury.io/js/porkbun-api-client.svg)](https://www.npmjs.com/package/porkbun-api-client)
+[![License: MIT](https://img.shields.io/badge/License-MIT-lime.svg)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-lime.svg)](https://www.typescriptlang.org/)
+[![codecov](https://codecov.io/gh/angelxmoreno/porkbun-api-client/graph/badge.svg?token=X8DYDTU2N8)](https://codecov.io/gh/angelxmoreno/porkbun-api-client)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/11daea2bb4af4182b226db2888f61246)](https://app.codacy.com/gh/angelxmoreno/porkbun-api-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/11daea2bb4af4182b226db2888f61246)](https://app.codacy.com/gh/angelxmoreno/porkbun-api-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/angelxmoreno/porkbun-api-client?utm_source=oss&utm_medium=github&utm_campaign=angelxmoreno%2Fporkbun-api-client&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+[![Formatted with Biome](https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev/)
+
+<a href="https://bun.sh" title="Built with Bun" style="display: inline-flex; align-items: center; padding: 2px 8px; background: #000; border-radius: 3px; text-decoration: none; height: 20px; box-sizing: border-box;">
+  <img src="./assets/bun-logo.svg" alt="Bun" width="16" height="16" style="margin-right: 6px;" />
+  <span style="color: white; font-family: Arial, sans-serif; font-size: 11px; line-height: 1;">Made with Bun</span>
+</a>
+
 A modern, typed TypeScript client for the [Porkbun v3 API](https://porkbun.com/api/json/v3/documentation).
 
 Built with `axios` for requests and tested with [Bun](https://bun.sh/).
