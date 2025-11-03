@@ -1,50 +1,99 @@
-// types.ts
 import type Keyv from '@keyvhq/core';
 import type { AxiosInstance } from 'axios';
 
+/**
+ * Configuration options for the Porkbun API client.
+ */
 export interface PorkbunConfig {
+    /** Your Porkbun API Key. */
     apiKey: string;
+    /** Your Porkbun Secret API Key. */
     secretApiKey: string;
+    /**
+     * An optional Axios instance to use for making HTTP requests.
+     * If not provided, a new Axios instance will be created.
+     */
     http?: AxiosInstance;
+    /**
+     * If true, forces the client to use the IPv4-only API endpoint.
+     * @default false
+     */
     forceIPv4?: boolean;
+    /**
+     * The base URL for the Porkbun API.
+     * @default 'https://api.porkbun.com/api/json/v3'
+     */
     baseUrl?: string;
+    /**
+     * An optional Keyv instance for caching API responses.
+     * If not provided, caching will be disabled.
+     */
     cache?: Keyv;
 }
 
+/**
+ * The base shape of all responses from the Porkbun API.
+ */
 export interface BaseResponse {
+    /** The status of the API response. */
     status: 'SUCCESS' | 'ERROR';
 }
 
+/**
+ * Represents a successful API response.
+ * @template T - The shape of the data returned in the successful response.
+ */
 export type SuccessResponse<T extends Record<string, unknown> = Record<string, never>> = T & {
+    /** Indicates a successful API call. */
     status: 'SUCCESS';
 };
 
+/**
+ * Represents an error response from the API.
+ */
 export interface ErrorResponse extends BaseResponse {
+    /** Indicates a failed API call. */
     status: 'ERROR';
+    /** A descriptive error message. */
     message: string;
 }
 
+/**
+ * A union type representing any possible API response.
+ * @template T - The shape of the data returned in a successful response.
+ */
 export type ApiResponse<T extends Record<string, unknown> = Record<string, never>> = SuccessResponse<T> | ErrorResponse;
 
 // --- API-Specific Types ---
 
-// /ping
+/**
+ * The response from the `/ping` endpoint.
+ */
 export type PingResponse = SuccessResponse<{
+    /** Your IP address as seen by the Porkbun API. */
     yourIp: string;
 }>;
 
 // DOMAIN Functionality
 
-// /domain/updateNs/DOMAIN
+/**
+ * Response for updating the nameservers of a domain.
+ */
 export type UpdateNsResponse = SuccessResponse;
 
-// /domain/getNs/DOMAIN
+/**
+ * Response for retrieving the nameservers of a domain.
+ */
 export type GetNsResponse = SuccessResponse<{
+    /** An array of nameserver strings. */
     ns: string[];
 }>;
 
-// /domain/listAll
+/**
+ * Response for listing all domains in the account.
+ */
 export type ListAllDomainsResponse = SuccessResponse<{
+    /** An array of domain objects. */
     domains: Array<{
         domain: string;
         status: 'ACTIVE' | 'INACTIVE';
@@ -63,11 +112,16 @@ export type ListAllDomainsResponse = SuccessResponse<{
     }>;
 }>;
 
-// /domain/addUrlForward/DOMAIN
+/**
+ * Response for adding a URL forwarder.
+ */
 export type AddUrlForwardResponse = SuccessResponse;
 
-// /domain/getUrlForwarding/DOMAIN
+/**
+ * Response for retrieving URL forwarding records for a domain.
+ */
 export type GetUrlForwardingResponse = SuccessResponse<{
+    /** An array of URL forwarding records. */
     forwards: Array<{
         id: string;
         subdomain: string;
@@ -78,10 +132,14 @@ export type GetUrlForwardingResponse = SuccessResponse<{
     }>;
 }>;
 
-// /domain/deleteUrlForward/DOMAIN/RECORDID
+/**
+ * Response for deleting a URL forwarder.
+ */
 export type DeleteUrlForwardResponse = SuccessResponse;
 
-// /domain/checkDomain/DOMAIN
+/**
+ * Response for checking the availability of a domain.
+ */
 export type CheckDomainResponse = SuccessResponse<{
     response: {
         avail: 'yes' | 'no';
@@ -111,17 +169,26 @@ export type CheckDomainResponse = SuccessResponse<{
     };
 }>;
 
-// /domain/createGlue/DOMAIN/GLUE_HOST_SUBDOMAIN
+/**
+ * Response for creating a glue record.
+ */
 export type CreateGlueResponse = SuccessResponse;
 
-// /domain/updateGlue/DOMAIN/GLUE_HOST_SUBDOMAIN
+/**
+ * Response for updating a glue record.
+ */
 export type UpdateGlueResponse = SuccessResponse;
 
-// /domain/deleteGlue/DOMAIN/GLUE_HOST_SUBDOMAIN
+/**
+ * Response for deleting a glue record.
+ */
 export type DeleteGlueResponse = SuccessResponse;
 
-// /domain/getGlue/DOMAIN
+/**
+ * Response for retrieving glue records for a domain.
+ */
 export type GetGlueResponse = SuccessResponse<{
+    /** An array of glue record host objects. */
     hosts: Array<
         [
             string,
@@ -135,25 +202,39 @@ export type GetGlueResponse = SuccessResponse<{
 
 // DNS Functionality
 
-// /dns/create/DOMAIN
+/**
+ * Response for creating a new DNS record.
+ */
 export type DnsCreateResponse = SuccessResponse<{
+    /** The ID of the newly created record. */
     id: string;
 }>;
 
-// /dns/edit/DOMAIN/ID
+/**
+ * Response for editing a DNS record.
+ */
 export type DnsEditResponse = SuccessResponse;
 
-// /dns/editByNameType/DOMAIN/TYPE/[SUBDOMAIN]
+/**
+ * Response for editing a DNS record by its name and type.
+ */
 export type DnsEditByNameTypeResponse = SuccessResponse;
 
-// /dns/delete/DOMAIN/ID
+/**
+ * Response for deleting a DNS record.
+ */
 export type DnsDeleteResponse = SuccessResponse;
 
-// /dns/deleteByNameType/DOMAIN/TYPE/[SUBDOMAIN]
+/**
+ * Response for deleting a DNS record by its name and type.
+ */
 export type DnsDeleteByNameTypeResponse = SuccessResponse;
 
-// /dns/retrieve/DOMAIN[/ID]
+/**
+ * Response for retrieving DNS records for a domain.
+ */
 export type DnsRetrieveResponse = SuccessResponse<{
+    /** An array of DNS record objects. */
     records: Array<{
         id: string;
         domain: string;
@@ -165,8 +246,11 @@ export type DnsRetrieveResponse = SuccessResponse<{
     }>;
 }>;
 
-// /dns/retrieveByNameType/DOMAIN/TYPE/[SUBDOMAIN]
+/**
+ * Response for retrieving DNS records by name and type.
+ */
 export type DnsRetrieveByNameTypeResponse = SuccessResponse<{
+    /** An array of DNS record objects. */
     records: Array<{
         id: string;
         domain: string;
@@ -178,11 +262,16 @@ export type DnsRetrieveByNameTypeResponse = SuccessResponse<{
     }>;
 }>;
 
-// /dns/createDnssecRecord/DOMAIN
+/**
+ * Response for creating a DNSSEC record.
+ */
 export type DnsCreateDnssecRecordResponse = SuccessResponse;
 
-// /dns/getDnssecRecords/DOMAIN
+/**
+ * Response for retrieving DNSSEC records for a domain.
+ */
 export type DnsGetDnssecRecordsResponse = SuccessResponse<{
+    /** A record object where keys are the record IDs. */
     records: Record<
         string,
         {
@@ -195,20 +284,26 @@ export type DnsGetDnssecRecordsResponse = SuccessResponse<{
     >;
 }>;
 
-// /dns/deleteDnssecRecord/DOMAIN/KEYTAG
+/**
+ * Response for deleting a DNSSEC record.
+ */
 export type DnsDeleteDnssecRecordResponse = SuccessResponse;
 
 // SSL Functionality
 
-// /ssl/retrieve/DOMAIN
+/**
+ * Response for retrieving an SSL certificate bundle for a domain.
+ */
 export type SslRetrieveResponse = SuccessResponse<{
-    // The documentation example doesn’t show further fields, but you likely will get
-    // certificate bundle details. Represent minimally:
+    /** The SSL certificate bundle. */
     bundle?: string;
     [key: string]: unknown;
 }>;
 
-// /pricing/get
+/**
+ * Response for retrieving the pricing of all TLDs.
+ */
 export type PricingGetResponse = SuccessResponse<{
+    /** A record object where keys are the TLDs. */
     pricing: Record<string, { registration: string; renewal: string; transfer: string }>;
 }>;

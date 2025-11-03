@@ -1,0 +1,10 @@
+{
+    "entryPoints": ["src/index.ts"],
+    "out": "docs/api",
+    "tsconfig": "tsconfig.json",
+    "exclude": ["**/*.test.ts", "**/tests/**"],
+    "plugin": ["typedoc-github-theme"],
+    "readme": "README.md",
+    "hideGenerator": true,
+    "excludePrivate": true
+}
