@@ -1,6 +1,6 @@
 {
     "name": "porkbun-api-client",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "A modern, typed, and cacheable TypeScript client for the Porkbun API",
     "author": "Angel S. Moreno <angelxmoreno@gmail.com>",
     "homepage": "https://porkbun-api-client.axmdev.app",
