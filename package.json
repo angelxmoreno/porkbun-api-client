@@ -27,7 +27,7 @@
         "lefthook": "^2.0.2",
         "rimraf": "^6.1.0",
         "typedoc": "^0.28.14",
-        "typedoc-plugin-markdown": "^4.9.0"
+        "typedoc-github-theme": "^0.3.1"
     },
     "peerDependencies": {
         "typescript": "^5"

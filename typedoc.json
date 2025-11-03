@@ -1,11 +1,10 @@
 {
-    "name": "Porkbun API Client Documentation",
     "entryPoints": ["src/index.ts"],
     "out": "docs/api",
     "tsconfig": "tsconfig.json",
-    "plugin": ["typedoc-plugin-markdown"],
     "exclude": ["**/*.test.ts", "**/tests/**"],
-    "readme": "none",
-    "excludePrivate": true,
-    "excludeProtected": true
+    "plugin": ["typedoc-github-theme"],
+    "readme": "README.md",
+    "hideGenerator": true,
+    "excludePrivate": true
 }
