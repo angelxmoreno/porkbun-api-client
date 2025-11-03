@@ -4,10 +4,12 @@
     "type": "module",
     "scripts": {
         "clean": "rimraf node_modules bun.lock dist && bun install",
-        "test": "bun run test",
+        "build": "rimraf dist && tsc",
         "lint": "biome check .",
         "lint:fix": "biome check --write",
-        "checktypes": "tsc --noEmit"
+        "check-types": "tsc --noEmit",
+        "test": "bun test",
+        "test:coverage": "bun test --coverage"
     },
     "dependencies": {
         "@keyvhq/core": "^2.1.11",
