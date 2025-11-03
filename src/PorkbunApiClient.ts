@@ -1,4 +1,4 @@
-import { DnsApi, DomainApi, HealthApi, SslApi } from './api';
+import { DnsApi, DomainApi, HealthApi, PricingApi, SslApi } from './api';
 import { PorkbunHttpClient } from './PorkbunHttpClient';
 import type { PorkbunConfig } from './types';
 
@@ -33,6 +33,8 @@ export class PorkbunApiClient {
     public ssl: SslApi;
     /** Provides access to the health-related endpoints. */
     public health: HealthApi;
+    /** Provides access to the price-related endpoints. */
+    public pricing: PricingApi;
 
     /**
      * Creates an instance of the PorkbunApiClient.
@@ -44,5 +46,6 @@ export class PorkbunApiClient {
         this.dns = new DnsApi(this.httpClient);
         this.ssl = new SslApi(this.httpClient);
         this.health = new HealthApi(this.httpClient);
+        this.pricing = new PricingApi(this.httpClient);
     }
 }
